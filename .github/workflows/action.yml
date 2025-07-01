@@ -4,7 +4,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout code conditional
+        if: contains(github.event.head_commit.message, '[checkout]')
         uses: actions/checkout@v2
       - name: Run a script
         run: echo "Hello, ${{ secrets.MY_FIRST_SECRET }}!"
